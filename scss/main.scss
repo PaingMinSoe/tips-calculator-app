@@ -1,0 +1,313 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+
+$primary: hsl(172, 67%, 45%);
+$very-dark-cyan: hsl(183, 100%, 15%);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Space Mono", monospace;
+}
+
+body {
+    background: hsl(185, 41%, 84%);
+    color: hsl(184, 14%, 56%);
+}
+
+input[type="text"] {
+    color: $very-dark-cyan;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        margin-bottom: 80px;
+    }
+
+    .card {
+        background: hsl(0, 0%, 100%);
+        width: 900px;
+        border-radius: 20px;
+        display: flex;
+
+        .left {
+            width: 50%;
+            padding: 25px;
+
+            .input-container {
+                margin-bottom: 30px;
+
+                .label-container {
+                    width: 100%;
+                    position: relative;
+
+                    .big-label {
+                        display: inline-block;
+                        margin-bottom: 10px;
+                    }
+
+                    .error {
+                        position: absolute;
+                        right: 0;
+                        color: red;
+                    }
+                }
+
+                .input-group {
+                    width: 100%;
+                    position: relative;
+
+                    .icon {
+                        position: absolute;
+                        z-index: 1000;
+                        top: 12px;
+                        left: 15px;
+                    }
+
+                    .big-input {
+                        width: 100%;
+                        border: none;
+                        text-align: right;
+                        padding: 3px 15px;
+                        border-radius: 5px;
+                        background: hsl(189, 41%, 97%);
+                    }
+
+                    .big-input::placeholder {
+                        color: hsl(184, 14%, 56%);
+                    }
+
+                    .big-input:focus-visible {
+                        outline: 2px solid $primary;
+                    }
+                }
+
+                .tips-group {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    grid-template-rows: 1fr 1fr;
+
+                    .radio-group {
+                        margin-top: 10px;
+                        margin-right: 10px;
+                        width: 121px;
+                        text-align: center;
+
+                        input[type="radio"] {
+                            width: 0px;
+                            display: none;
+                        }
+
+                        .radio-button {
+                            display: inline-block;
+                            font-size: 1.5rem;
+                            width: 100%;
+                            background: $very-dark-cyan;
+                            color: hsl(0, 0%, 100%);
+                            border-radius: 5px;
+                            padding: 4px 0px;
+                            transition: 0.1s;
+                        }
+
+                        .radio-button:hover,
+                        input[type="radio"]:checked + label.radio-button {
+                            background: hsl(172, 67%, 45%);
+                            color: black;
+                        }
+                    }
+
+                    .tip-input-group {
+                        margin-top: 10px;
+                        width: 121px;
+                        position: relative;
+
+                        .tip-error {
+                            position: absolute;
+                            left: 0px;
+                            top: 45px;
+                            color: red;
+                        }
+
+                        .tip-input {
+                            width: 100%;
+                            border: none;
+                            text-align: right;
+                            padding: 3px 12px;
+                            border-radius: 5px;
+                            background: hsl(189, 41%, 97%);
+                        }
+
+                        .tip-input:focus-visible {
+                            outline: 2px solid $primary;
+                        }
+                    }
+                }
+            }
+        }
+
+        .right {
+            width: 50%;
+            padding: 25px;
+
+            .result-box {
+                width: 100%;
+                height: 100%;
+                padding: 30px 20px;
+                border-radius: 15px;
+                background: $very-dark-cyan;
+
+                .result-container {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 20px;
+
+                    .result-label {
+                        h3 {
+                            color: hsl(0, 0%, 100%);
+                        }
+                    }
+
+                    .result-value {
+                        font-size: 48px;
+                        color: $primary;
+                    }
+                }
+
+                .reset-btn {
+                    margin-top: 75px;
+                    width: 100%;
+                    font-size: 24px;
+                    padding: 5px;
+                    border-radius: 5px;
+                    text-align: center;
+                    border: none;
+                    background: $primary;
+                    color: hsl(183, 100%, 15%);
+                    transition: ease-in-out 0.1s;
+                }
+
+                .active-btn:hover {
+                    background: hsl(189, 41%, 97%);
+                }
+
+                .inactive {
+                    opacity: 0.2;
+                }
+            }
+        }
+    }
+}
+
+input {
+    font-size: 1.5rem;
+}
+
+.shake {
+    outline: 2px solid red !important;
+    animation-name: shake;
+    animation-duration: 0.5s;
+    animation-delay: 0.25s;
+}
+
+/* This approximates the ease-in-out-shake animation from easings.net, which would require a plug-in to use*/
+@keyframes shake {
+    0% {
+        transform: translateX(0px);
+        timing-function: ease-in;
+    }
+    37% {
+        transform: translateX(5px);
+        timing-function: ease-out;
+    }
+    55% {
+        transform: translateX(-5px);
+        timing-function: ease-in;
+    }
+    73% {
+        transform: translateX(4px);
+        timing-function: ease-out;
+    }
+    82% {
+        transform: translateX(-4px);
+        timing-function: ease-in;
+    }
+    91% {
+        transform: translateX(2px);
+        timing-function: ease-out;
+    }
+    96% {
+        transform: translateX(-2px);
+        timing-function: ease-in;
+    }
+    100% {
+        transform: translateX(0px);
+        timing-function: ease-in;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .container {
+        img {
+            margin-top: 60px;
+        }
+
+        .card {
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+
+            .left,
+            .right {
+                width: 100%;
+            }
+
+            .left {
+                .input-container {
+                    .input-group {
+                        .icon {
+                            top: -46px;
+                        }
+                    }
+
+                    .tips-group {
+                        .radio-group,
+                        .tip-input-group {
+                            width: 90%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .container {
+        .card {
+            .left {
+                .input-container {
+                    .tips-group {
+                        grid-template-columns: 1fr 1fr;
+                    }
+                }
+            }
+
+            .right {
+                padding: 15px;
+                .result-box {
+                    padding: 20px 15px;
+                    .reset-btn {
+                        margin-top: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
